@@ -23,7 +23,7 @@ const getCategories = async () => {
 getCategories();
 
 
-//plants section
+
 
 const allPlants = async () => {
     const url = await fetch("https://openapi.programming-hero.com/api/plants");
@@ -65,8 +65,6 @@ const displayPlants = (plants) => {
         `;
         container.append(card);
     });
-
-    //btn functionality
 
     const buybtn = document.getElementsByClassName("buy-button");
 
@@ -127,8 +125,6 @@ const displayPlants = (plants) => {
     }
 };
 
-
-//cart functionality
 function updateCartTotal(){
     const cartContainer = document.getElementById("cart");
     const totalDiv = document.getElementById("cart-total");
