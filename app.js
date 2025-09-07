@@ -4,19 +4,16 @@ const getCategories = async () => {
     const data = await response.json();
 
     const container = document.getElementById("categories-list");
-    container.innerHTML = ""; // clear any existing content
+    container.innerHTML = "";
 
     data.categories.forEach(element => {
         const button = document.createElement("a");
         button.textContent = element.category_name;
         button.classList.add("category_button");
 
-        // Add click event
         button.addEventListener("click", async () => {
             const categoryResponse = await fetch(`https://openapi.programming-hero.com/api/category/${element.id}`);
             const categoryData = await categoryResponse.json();
-
-            // Now render plants of this category
             displayPlants(categoryData.plants);
         });
 
@@ -25,7 +22,9 @@ const getCategories = async () => {
 };
 getCategories();
 
-/////// RENDER ALL PLANTS (default)
+
+//plants section
+
 const allPlants = async () => {
     const url = await fetch("https://openapi.programming-hero.com/api/plants");
     const data = await url.json();
@@ -33,7 +32,7 @@ const allPlants = async () => {
 };
 allPlants();
 
-/////// RENDER FUNCTION (reusable)
+
 const displayPlants = (plants) => {
     const container = document.getElementById("card-container");
     container.innerHTML = "";
@@ -67,33 +66,30 @@ const displayPlants = (plants) => {
         container.append(card);
     });
 
-    const buybtn=document.getElementsByClassName("buy-button");
+    //btn functionality
+
+    const buybtn = document.getElementsByClassName("buy-button");
 
     for (const btn of buybtn) {
-        btn.addEventListener('click',function(){
-            const cardBody = btn.closest(".card-body");
+        btn.addEventListener('click', function() {
+            const plantCard = btn.closest(".card-body");
+            const plantName = plantCard.querySelector(".card-title").innerText;
+            const plantPrice = parseFloat(plantCard.querySelector(".ajaira p").innerText);
 
-            // grab the name and price from that card
-            const plantName = cardBody.querySelector(".card-title").innerText;
-            const plantPrice = parseFloat(cardBody.querySelector(".ajaira p").innerText);
+            const cartContainer = document.getElementById("cart");
 
-            const cartBody=document.getElementById("cart");
-
-            // Check if item already exists
-            let existingItem = Array.from(cartBody.querySelectorAll(".cart-item")).find(item => 
+            let existingPlant = Array.from(cartContainer.querySelectorAll(".cart-item")).find(item =>
                 item.querySelector(".cart-item-name").innerText === plantName
             );
 
-            if(existingItem){
-                // increase quantity
-                const qtyEl = existingItem.querySelector(".cart-item-qty");
+            if(existingPlant){
+                const qtyEl = existingPlant.querySelector(".cart-item-qty");
                 qtyEl.innerText = parseInt(qtyEl.innerText) + 1;
             } else {
-                // create new cart item
-                const addtocart = document.createElement("div");
-                addtocart.classList.add("cart-item"); // mark cart item
+                const newCartItem = document.createElement("div");
+                newCartItem.classList.add("cart-item");
 
-                addtocart.innerHTML=`
+                newCartItem.innerHTML = `
                 <div class="flex items-center justify-between bg-[#f0fdf4] shadow-l p-2 mt-2 rounded-xl">
                     <div class=" mt-3">
                         <h3 class="text-l font-semibold cart-item-name">${plantName}</h3>
@@ -107,43 +103,43 @@ const displayPlants = (plants) => {
                 </div>
                 `;
 
-                cartBody.append(addtocart);
+                cartContainer.append(newCartItem);
 
-                const crossbtn = addtocart.querySelector(".cross");
-                crossbtn.addEventListener("click", function(){
-                    const qtyEl = addtocart.querySelector(".cart-item-qty");
+                const crossBtn = newCartItem.querySelector(".cross");
+                crossBtn.addEventListener("click", function() {
+                    const qtyEl = newCartItem.querySelector(".cart-item-qty");
                     let qty = parseInt(qtyEl.innerText);
 
                     if(qty > 1){
                         qtyEl.innerText = qty - 1;
                     } else {
-                        addtocart.remove();
+                        newCartItem.remove();
                     }
 
                     updateCartTotal();
                 });
             }
 
-            // <-- ADD THESE LINES HERE -->
-            const totalEl = document.getElementById("cart-total");
-            cartBody.appendChild(totalEl); // always last
-            updateCartTotal(); // update total
+            let totalDiv = document.getElementById("cart-total");
+            cartContainer.appendChild(totalDiv);
+            updateCartTotal();
         });
     }
 };
 
-// Total calculation function
+
+//cart functionality
 function updateCartTotal(){
-    const cartBody = document.getElementById("cart");
-    const totalEl = document.getElementById("cart-total");
+    const cartContainer = document.getElementById("cart");
+    const totalDiv = document.getElementById("cart-total");
 
     let total = 0;
-    const items = cartBody.querySelectorAll(".cart-item");
+    const items = cartContainer.querySelectorAll(".cart-item");
     items.forEach(item => {
-        const price = parseFloat(item.querySelector(".cart-item-price").innerText) || 0;
+        const price = parseInt(item.querySelector(".cart-item-price").innerText) || 0;
         const qty = parseInt(item.querySelector(".cart-item-qty").innerText) || 0;
         total += price * qty;
     });
 
-    totalEl.innerText = `Total: ${total.toFixed(2)}`;
+    totalDiv.innerText = `Total: ${total}`;
 }
