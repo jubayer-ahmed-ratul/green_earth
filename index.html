@@ -1,108 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Earth</title>
 
-    <!--CSS-->
-    <link rel="stylesheet" href="style.css">
+  <!--CSS-->
+  <link rel="stylesheet" href="style.css">
 
-    <!--FONT AWASOME-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!--FONT AWESOME-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!--TAILWIND CSS-->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!--TAILWIND CSS-->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <!--DAISY UI-->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <!--DAISY UI-->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 
-    <!--GOOGLE FONT-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!--GOOGLE FONT-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
 <body>
 
-    <!--HEADER-->
-    <header class="bg-[#15803D] shadow-sm text-white ">
-        <div class="navbar max-w-[1190px] mx-auto">
-            <div class="navbar-start">
-                <h3 class="poppins-font text-2xl">Green Earth</h3>
-            </div>
+  <!--HEADER-->
+  <header class="bg-[#15803D] shadow-sm text-white ">
+    <div class="navbar max-w-[1190px] mx-auto">
+      <div class="navbar-start">
+        <h3 class="poppins-font text-2xl">Green Earth</h3>
+      </div>
 
-            <div class="navbar-center hidden lg:flex">
-                <ul class="menu menu-horizontal px-1">
-                    <li><a class="text-l"> About</a></li>
-                    <li><a class="text-l">Galary</a></li>
-                    <li><a class="text-l">Plant a Tree</a></li>
-                </ul>
-            </div>
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+          <li><a class="text-l"> About</a></li>
+          <li><a class="text-l">Gallery</a></li>
+          <li><a class="text-l">Plant a Tree</a></li>
+        </ul>
+      </div>
 
-            <div class="navbar-end">
-                <button class="bg-[#FACC15] text-[#15803D] px-4 py-2 rounded-2xl text-l">Plant a Tree</button>
-            </div>
-        </div>
-    </header>
-    <!--HEADER ENDS-->
-
-    <!--BANNER SECTION -->
-    <section class=" bg-[#CFF0DC] max-h-[500px] pt-10">
-        <div class=" mx-auto flex items-center justify-around ">
-            <img class="w-1/4" src="assets/hero-leaf1.png" alt="">
-            <div class="text-center poppins-font space-y-5 pb-10">
-                <h1 class="text-3xl font-semibold">Plant a Tree, Grow a Future</h1>
-                <p>Join our mission to plant 1 million trees and make the Earth greener for future <br> generations </p>
-                <button class="bg-[#FACC15] text-[#15803D] px-4 py-2 rounded-2xl text-l">Get Involved</button>
-            </div>
-            <img class="w-1/4" src="assets/hero-leaf2.png" alt="">
-        </div>
-    </section>
-    <!--BANNER SECTION ENDS-->
-
-    <!---MAIN SECTION-->
-    <section class="bg-[#f0fdf4] pt-10 poppins-font">
-        <h2 class="text-center text-3xl poppins-font font-semibold mb-5">Choose Your Trees</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-6 max-w-[1500px] mx-auto gap-4">
-
-            <!-- Categories -->
-            <div class="categories md:col-span-1 p-2">
-                <h3 class="text-2xl font-bold mb-2">Categories</h3>
-                <div id="categories-list" class="list"></div>
-            </div>
-
-            <!-- Spinner: initially hidden -->
-
-
-
-
-
-            <!-- Cards Container -->
-            <!-- Cards Container -->
-<div id="card-container" class="cards-container md:col-span-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-2">
-    <!-- Cards will be appended here dynamically -->
-    
-    <!-- Spinner: initially visible and centered -->
-    <div id="spinner" class="flex justify-center items-center col-span-full">
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
+      <div class="navbar-end">
+        <button class="bg-[#FACC15] text-[#15803D] px-4 py-2 rounded-2xl text-l">Plant a Tree</button>
+      </div>
     </div>
-</div>
+  </header>
+  <!--HEADER ENDS-->
 
-            <!-- Cart -->
-            <!-- Cart -->
-<div class="cart bg-white rounded-2xl md:col-span-1 p-2" id="cart">
-    <h3 class="text-3xl">Your Cart</h3>
-    <hr>
-    <!-- Total initially visible -->
-    <div id="cart-total" class="mt-4 font-semibold text-lg">Total: 0</div>
-</div>
+  <!--BANNER SECTION -->
+  <section class=" bg-[#CFF0DC] max-h-[500px] pt-10">
+    <div class=" mx-auto flex items-center justify-around ">
+      <img class="w-1/4" src="assets/hero-leaf1.png" alt="">
+      <div class="text-center poppins-font space-y-5 pb-10">
+        <h1 class="text-3xl font-semibold">Plant a Tree, Grow a Future</h1>
+        <p>Join our mission to plant 1 million trees and make the Earth greener for future <br> generations </p>
+        <button class="bg-[#FACC15] text-[#15803D] px-4 py-2 rounded-2xl text-l">Get Involved</button>
+      </div>
+      <img class="w-1/4" src="assets/hero-leaf2.png" alt="">
+    </div>
+  </section>
+  <!--BANNER SECTION ENDS-->
 
-    </section>
+  <!---MAIN SECTION-->
+  <section class="bg-[#f0fdf4] pt-10 poppins-font">
+    <h2 class="text-center text-3xl poppins-font font-semibold mb-5">Choose Your Trees</h2>
 
-<script src="app.js"></script>
+    <div class="grid grid-cols-1 md:grid-cols-6 max-w-[1500px] mx-auto gap-4">
+
+      <!-- Categories -->
+      <div class="categories md:col-span-1 p-2">
+        <h3 class="text-2xl font-bold mb-2">Categories</h3>
+        <div id="categories-list" class="list"></div>
+      </div>
+
+      <!-- Cards Container -->
+      <div id="card-container" class="cards-container md:col-span-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-2">
+       
+
+        
+        <div id="spinner" class="flex justify-center items-center col-span-full">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <!-- Cart -->
+      <div class="cart bg-white rounded-2xl md:col-span-1 p-2" id="cart">
+        <h3 class="text-3xl">Your Cart</h3>
+        <hr>
+        <!-- Total initially visible -->
+        <div id="cart-total" class="mt-4 font-semibold text-lg">Total: 0</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+   <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box h-[500px] overflow-y-auto">
+    <h3 id="modal-name" class="text-lg font-bold"></h3>
+    <img id="modal-image" src="" alt="" class="my-2 rounded-xl max-h-[200px] w-full object-cover"/>
+    <p><strong>Category:</strong> <span id="modal-category"></span></p>
+    <p><strong>Price:</strong> <span id="modal-price"></span></p>
+    <p><strong>Description:</strong> <span id="modal-description"></span></p>
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+   </dialog>
+
+
+
+  <script src="app.js"></script>
 </body>
 </html>

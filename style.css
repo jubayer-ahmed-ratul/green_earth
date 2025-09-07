@@ -2,10 +2,6 @@
   font-family: "Poppins", sans-serif;
   
 }
-
-
-
-
 .category_button {
     margin: 5px 0;
     padding: 5px 10px;
@@ -16,6 +12,14 @@
     background-color: #15803d;
     color: white;
     border-radius: 10px;
+}
+
+
+.category_button.active-category {
+    background-color: #15803d; 
+    color: white;
+    border-radius: 10px;
+    font-weight: 600;
 }
 
 #spinner {
@@ -58,9 +62,19 @@
   }
 }
 
+.card .ajaira button,
+.card .card-actions .buy-button {
+    transition: all 0.3s ease;
+}
 
-
-
+.card .ajaira button:hover,
+.card .card-actions .buy-button:hover {
+    background-color: #15803d; 
+    color: #ffffff; 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+    cursor: pointer;
+}
 
 @media screen and (max-width: 500px) {
     .navbar{
