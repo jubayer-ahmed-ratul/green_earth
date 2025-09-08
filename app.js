@@ -96,8 +96,8 @@ const displayPlants = (plants) => {
 
       const plantData = data.plants;
 
-      modal.querySelector("#modal-name").innerText = plantData.name;
-      modal.querySelector("#modal-category").innerText = plantData.category;
+          modal.querySelector("#modal-name").innerText = plantData.name;
+  modal.querySelector("#modal-category").innerText = plantData.category;
       modal.querySelector("#modal-image").src = plantData.image;
       modal.querySelector("#modal-description").innerText = plantData.description;
       modal.querySelector("#modal-price").innerText = plantData.price;
@@ -111,9 +111,11 @@ const displayPlants = (plants) => {
   for (const buyBtn of buyBtns) {
     buyBtn.addEventListener('click', function () {
       const plantCard = buyBtn.closest(".card-body");
+
       const plantName = plantCard.querySelector(".card-title").innerText;
-      const plantPrice = parseFloat(plantCard.querySelector(".ajaira p").innerText);
-      const plantId = buyBtn.getAttribute("data-id");
+
+    const plantPrice = parseFloat(plantCard.querySelector(".ajaira p").innerText);
+        const plantId = buyBtn.getAttribute("data-id");
 
       const cartContainer = document.getElementById("cart");
 
