@@ -76,6 +76,24 @@
     cursor: pointer;
 }
 
+.yellow-btn{
+   box-shadow: 1px 1px 0px black;
+   transition: transform 0.3s ease, background-color 0.3s ease;
+
+}
+.yellow-btn:hover{
+   transform: scale(1.02);
+}
+.impact-card {
+  box-shadow: 1px 2px 0px black;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.impact-card:hover {
+  background-color: #b9f8ce;
+  transform: scale(1.02);
+}
+
 @media screen and (max-width: 500px) {
     .navbar{
         display: flex;
