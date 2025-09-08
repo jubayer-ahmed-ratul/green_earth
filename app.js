@@ -1,7 +1,16 @@
+/////// SPINNER TOGGLE
+function toggleSpinner(show) {
+  const spinner = document.getElementById("spinner");
+  if (!spinner) return;
+  spinner.style.display = show ? "flex" : "none";
+}
+
 /////// CATEGORIES SECTION
 const getCategories = async () => {
+  toggleSpinner(true);
   const response = await fetch("https://openapi.programming-hero.com/api/categories");
   const data = await response.json();
+  toggleSpinner(false);
 
   const container = document.getElementById("categories-list");
   container.innerHTML = "";
@@ -12,15 +21,16 @@ const getCategories = async () => {
     button.classList.add("category_button");
 
     button.addEventListener("click", async () => {
-     
       const allButtons = document.querySelectorAll(".category_button");
       allButtons.forEach(btn => btn.classList.remove("active-category"));
 
-     
       button.classList.add("active-category");
 
+      toggleSpinner(true);
       const categoryResponse = await fetch(`https://openapi.programming-hero.com/api/category/${category.id}`);
       const categoryData = await categoryResponse.json();
+      toggleSpinner(false);
+
       displayPlants(categoryData.plants);
     });
 
@@ -29,10 +39,12 @@ const getCategories = async () => {
 };
 getCategories();
 
-
 const allPlants = async () => {
+  toggleSpinner(true);
   const response = await fetch("https://openapi.programming-hero.com/api/plants");
   const data = await response.json();
+  toggleSpinner(false);
+
   displayPlants(data.plants);
 };
 allPlants();
@@ -47,9 +59,9 @@ const displayPlants = (plants) => {
 
     card.innerHTML = `
       <img src="${plant.image}"
-            alt="${plant.name}"
-            class="rounded-xl w-full h-48 object-cover" />
-        
+           alt="${plant.name}"
+           class="rounded-xl w-full h-48 object-cover" />
+      
       <div class="card-body">
           <h2 class="card-title cursor-pointer" data-id="${plant.id}">${plant.name}</h2>
           <p>${plant.description}</p>
@@ -61,7 +73,7 @@ const displayPlants = (plants) => {
                   <p>${plant.price}</p>
               </div>
           </div>
-            
+
           <div class="card-actions">
               <button class="bg-[#15803d] w-[100%] text-white p-2 rounded-xl mt-2 buy-button" data-id="${plant.id}">Buy Now</button>
           </div>
@@ -77,8 +89,11 @@ const displayPlants = (plants) => {
       const plantId = titleEl.getAttribute("data-id");
       const modal = document.getElementById("my_modal_5");
 
+      toggleSpinner(true);
       const response = await fetch(`https://openapi.programming-hero.com/api/plant/${plantId}`);
       const data = await response.json();
+      toggleSpinner(false);
+
       const plantData = data.plants;
 
       modal.querySelector("#modal-name").innerText = plantData.name;
@@ -86,6 +101,7 @@ const displayPlants = (plants) => {
       modal.querySelector("#modal-image").src = plantData.image;
       modal.querySelector("#modal-description").innerText = plantData.description;
       modal.querySelector("#modal-price").innerText = plantData.price;
+
       modal.showModal();
     });
   });
@@ -118,7 +134,7 @@ const displayPlants = (plants) => {
                   <h3 class="text-l font-semibold cart-item-name">${plantName}</h3>
                   <div class="flex items-center gap-2 mt-2">
                       <i class="fa-solid fa-bangladeshi-taka-sign"></i>
-                      <p class="text-sm cart-item-price">${plantPrice}</p> 
+                      <p class="text-sm cart-item-price">${plantPrice}</p>
                       <p class="text-sm cart-item-qty">1</p>
                   </div>
               </div>
